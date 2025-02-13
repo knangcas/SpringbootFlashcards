@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.FlashCardsSPA;
 
 public class FlashCardNotFoundException extends RuntimeException{
 

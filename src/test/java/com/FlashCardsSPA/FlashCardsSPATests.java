@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.FlashCardsSPA;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Demo8ApplicationTests {
+class FlashCardsSPATests {
 
 	@Test
 	void contextLoads() {

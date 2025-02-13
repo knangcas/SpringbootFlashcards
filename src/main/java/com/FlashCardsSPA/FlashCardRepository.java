@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.FlashCardsSPA;
 
 import org.springframework.data.repository.CrudRepository;
 
