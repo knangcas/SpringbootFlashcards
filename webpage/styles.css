@@ -1,0 +1,43 @@
+body {
+    background-color: #424242;
+    color: white;
+}
+
+#mainNav {
+    padding: 0.5em;
+    font-size: 3em;
+    text-align: center;
+    border-style: none none dotted none;
+    border-width: 0.2em;
+
+
+}
+
+#topper {
+    padding-top: 0.5em;
+}
+
+#flashCard {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 1em;
+    border-style: solid;
+    border-color: white;
+    background-color: #8e8e8e;
+
+
+}
+
+#flashCardContent{
+    padding: 1em 1em 1em 1em;
+}
+
+#flashCard:hover {
+    cursor: pointer;
+}
+
+
+
+.pad {
+    padding-top: 2em;
+}
+
