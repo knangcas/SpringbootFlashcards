@@ -1,9 +1,11 @@
 console.log('Thank you for using WebStorm 💙')
-
+let qArray = [];
+let aArray = [];
 let x = 0;
 let b = "";
+let qIndex = 0;
 async function getData() {
-    const url = "https://uselessfacts.jsph.pl/api/v2/facts/today";
+    const url = "http://localhost:8080/flashcarddecks/1";
 
     try {
         const response = await fetch(url);
@@ -38,8 +40,21 @@ async function lma() {
     const question1 = getData();
 
     const q = JSON.parse(await question1);
+    console.log(q.cards[0].question);
+    for (let i = 0; i < q.cards.length; i++) {
+        qArray[i] = q.cards[i].question;
+        aArray[i] = q.cards[i].answer;
+    }
 
-    element.innerHTML = q.text;
+    console.log(aArray);
 
+
+    element.innerHTML = q.cards[0].question;
+
+}
+
+function nextCard() {
+    const element = document.getElementById('flashCardContent');
+    element.innerHTML = qArray[++qIndex]
 }
 

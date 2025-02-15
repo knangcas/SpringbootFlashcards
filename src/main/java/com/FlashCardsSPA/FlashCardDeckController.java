@@ -19,12 +19,12 @@ public class FlashCardDeckController {
         repository = r;
     }
 
-    @GetMapping("/FlashCardDecks")
+    @GetMapping("/flashcarddecks")
     ResponseEntity<List<FlashCardDeck>> all() {
         return new ResponseEntity<>((List<FlashCardDeck>)repository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/FlashCardDecks/{id}")
+    @GetMapping("/flashcarddecks/{id}")
     FlashCardDeck one(@PathVariable long id) {
         return repository.findById(id).orElseThrow(() -> new FlashCardDeckNotFoundException(id));
     }

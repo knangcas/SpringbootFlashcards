@@ -12,10 +12,12 @@ class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
-    CommandLineRunner initDatabase(FlashCardDeckRepository deckRepo) {
+    CommandLineRunner initDatabase(FlashCardDeckRepository deckRepo, FlashCardRepository cardRepo) {
 
         return args -> {
             log.info("Preloading " + deckRepo.save(new FlashCardDeck("FirstDeck")));
+            log.info("Preloading " + cardRepo.save(new FlashCard("What is 1+1", "2", 1)));
+            log.info("Preloading " + cardRepo.save(new FlashCard("What does await do in javascript?", "Block", 1)));
         };
     }
 }
