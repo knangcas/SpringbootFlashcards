@@ -4,6 +4,7 @@ let aArray = [];
 let x = 0;
 let b = "";
 let qIndex = 0;
+let progress = 0;
 async function getData() {
     const url = "http://localhost:8080/flashcarddecks/1";
 
@@ -46,6 +47,11 @@ async function lma() {
         aArray[i] = q.cards[i].answer;
     }
 
+
+
+    document.getElementById('progress').innerText = "Card " + (qIndex+1) + " out of " + qArray.length;
+
+
     console.log(aArray);
 
 
@@ -56,5 +62,9 @@ async function lma() {
 function nextCard() {
     const element = document.getElementById('flashCardContent');
     element.innerHTML = qArray[++qIndex]
+    updateProgress()
 }
 
+function updateProgress() {
+    document.getElementById('progress').innerText = "Card " + (qIndex+1) + " out of " + qArray.length;
+}
