@@ -10,7 +10,7 @@ last updated: February 17th, 2025
 
 ### Screenshots
 
-![Screenshot1](https://github.com/knangcas/SpringbootFlashcards/blob/main/Screenshots/ss1.png?raw=true)
+![Screenshot1](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss1.png?raw=true)
 
 - VanillaJS implementation with bootstrap css. User can click on the flashcard to "flip" and see the answer. 
 - Restart : returns to the initial state of the deck. 
