@@ -4,39 +4,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src = "index.js"></script>
+
 </head>
 <body>
 
 <nav id="mainNav"><h1 class = "display-1 text-center">FLASHcards</h1></nav>
 
-<h1 class = "display-4 text-center" > DeckName </h1>
+<h1 class = "display-4 text-center" id = "deckNameH1"> DeckName </h1>
 
-<div class="container text-center" id = "topper">
-    <div class="row">
+<div class="container" id = "topper">
+    <div class="row text-center">
         <div class="col"><p  id ="progress"> Card X of X </p></div>
     </div>
-    <div class="row">
+    <div class="row  text-center">
         <div class ="col">
-            <div id="flashCard" onclick="lma()">
+            <div id="flashCard" onclick="">
                 <p id="flashCardContent">
                     stuff
                 </p>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row text-center">
 
         <div class = "col pad">
             <nav class="nav nav-pills flex-column flex-sm-row">
 
-            <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav" >Restart</button>
+            <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav buttons" id = "restartButton" onclick="restart()">Restart</button>
 
-            <button class="btn btn-primary btn-lg flex-sm-fill text-sm-center button-nav" onclick="nextCard()">Next</button>
+            <button class="btn btn-primary btn-lg flex-sm-fill text-sm-center button-nav buttons" onclick="nextCard()" id = "nextButton">Next</button>
 
-            <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav" >Skip</button>
+            <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav buttons" onclick="skip()" id="skippedButton">Skip <span class = "badge text-bg-warning" id="skippedSpan" hidden="hidden">0</span></button>
         </nav> </div>
     </div>
+
 
 
 
@@ -47,7 +48,7 @@
 
 
 
-
+<script src = "index.js"></script>
 </body>
 
 

@@ -18,11 +18,12 @@ body {
 }
 
 #flashCard {
-    padding: 0.5em 0.5em 0.5em 0.5em;
+    padding: 1em 1em 1em 1em;
     border-radius: 1em;
     border-style: solid;
     border-color: white;
-    background-color: #8e8e8e;
+
+    background-color: #626262;
 
 
 }
@@ -39,5 +40,9 @@ body {
 
 .pad {
     padding-top: 2em;
+}
+
+.buttons {
+    margin: 0 5em 0 5em;
 }
 
