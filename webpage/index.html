@@ -18,7 +18,7 @@
     </div>
     <div class="row  text-center">
         <div class ="col">
-            <div id="flashCard" onclick="">
+            <div id="flashCard" onclick="flipCard()">
                 <p id="flashCardContent">
                     stuff
                 </p>
@@ -32,9 +32,9 @@
 
             <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav buttons" id = "restartButton" onclick="restart()">Restart</button>
 
-            <button class="btn btn-primary btn-lg flex-sm-fill text-sm-center button-nav buttons" onclick="nextCard()" id = "nextButton">Next</button>
+            <button class="btn btn-primary  flex-sm-fill text-sm-center button-nav buttons" onclick="nextCard()" id = "nextButton">Next</button>
 
-            <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav buttons" onclick="skip()" id="skippedButton">Skip <span class = "badge text-bg-warning" id="skippedSpan" hidden="hidden">0</span></button>
+            <button class="btn btn-secondary flex-sm-fill text-sm-center button-nav buttons" onclick="skip()" id="skipButton">Skip <span class = "badge text-bg-warning" id="skippedSpan" hidden="hidden">0</span></button>
         </nav> </div>
     </div>
 

@@ -18,6 +18,10 @@ class LoadDatabase {
             log.info("Preloading " + deckRepo.save(new FlashCardDeck("FirstDeck")));
             log.info("Preloading " + cardRepo.save(new FlashCard("What is 1+1", "2", 1)));
             log.info("Preloading " + cardRepo.save(new FlashCard("What does await do in javascript?", "Block", 1)));
+            log.info("Preloading " + cardRepo.save(new FlashCard( "What is the difference between --- and == in javascript?", "=== is more strict and does not do type conversions like == does", 1)));
+            log.info("Preloading " + cardRepo.save(new FlashCard("What is the left most digit in the three digit HTTP status code for client related errors?", "4xx", 1)));
+            log.info("Preloading " + cardRepo.save(new FlashCard("What is penetration testing?", "Testing done by ethical hackers in which the goal is to try and breach a system.", 1)));
+
         };
     }
 }

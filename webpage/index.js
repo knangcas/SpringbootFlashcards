@@ -91,7 +91,7 @@ function nextCard() {
     }
 
     const element = document.getElementById('flashCardContent');
-    if (qIndex == cardArray.length - 1) {
+    if (qIndex === cardArray.length - 1) {
         element.innerHTML = "You have reached the end!";
         end = true;
         endDeck();
@@ -121,18 +121,38 @@ function restart() {
     document.getElementById("skippedSpan").hidden = true;
     const element = document.getElementById('flashCardContent');
     element.innerText = cardArray[++qIndex].question;
+    document.getElementById("nextButton").innerText = "Next";
     updateProgress();
 }
 
 function skip(){
-
+    if (end) {
+        return;
+    }
     const element = document.getElementById('flashCardContent');
     const skippedElement = document.getElementById('skippedSpan');
     skippedElement.hidden = false;
-    skipped.push(cardArray[qIndex])
-    element.innerHTML = cardArray[++qIndex].question
     skippedElement.innerHTML = ++skippedQty;
+    skipped.push(cardArray[qIndex])
+    if (qIndex === cardArray.length - 1) {
+        element.innerHTML = "You have reached the end!";
+        end = true;
+        endDeck();
+        return;
+    }
+    element.innerHTML = cardArray[++qIndex].question
+
     updateProgress();
+
+}
+
+function flipCard() {
+    const content = document.getElementById('flashCardContent');
+    if (content.innerText === cardArray[qIndex].question) {
+        content.innerHTML = cardArray[qIndex].answer;
+    } else {
+        content.innerHTML = cardArray[qIndex].question
+    }
 
 }
 
