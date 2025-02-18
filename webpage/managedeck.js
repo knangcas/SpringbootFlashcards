@@ -1,5 +1,6 @@
 let cardArray = [];
 let cards = "";
+let cardQty = 0;
 
 async function postData(questionText, answerText) {
     const url = "http://localhost:8080/flashcards";
@@ -47,8 +48,10 @@ async function populateList() {
     cards = JSON.parse(await getData());
 
     for(let i = 0; i < cards.cards.length; i++) {
-        cardArray[i] = {question: cards.cards[i].question, answer: cards.cards[i].answer}
+        cardArray[i] = {question: cards.cards[i].question, answer: cards.cards[i].answer, cardID : cards.cards[i].cardID}
     }
+    cardQty = cardArray.length;
+    document.getElementById("cardQty").innerText = `${cardQty} Cards`;
 
     listElement.appendChild(new Option(cardArray[0].question, "0", true, true));
     if (cardArray.length > 1) {
@@ -74,6 +77,32 @@ function populateFields() {
     answerField.value= cardArray[index].answer;
 }
 
+
+async function updateData(id,questionText,answerText) {
+    const url = `http://localhost:8080/flashcards/${id}`
+    try {
+        const response = await fetch(url, {
+            method: 'PUT', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({question: questionText, answer: answerText, deckID: 1})
+        });
+        if (!response.ok) { throw new Error(`Response Status : ${response.status}`)};
+        const json = await response.json();
+        console.log(json);
+        //return JSON.stringify(json);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+function saveCard() {
+    questionField = document.getElementById("questionTextArea");
+    answerField = document.getElementById("answerTextArea");
+    listElement = document.getElementById("cardList");
+
+    let index = Number(listElement.value)
+    listElement.options[listElement.selectedIndex].innerText = questionField.value;
+    updateData(cardArray[index].cardID, questionField.value, answerField.value);
+}
 
 populateList()
 
