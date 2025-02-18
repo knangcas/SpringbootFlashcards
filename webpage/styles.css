@@ -5,13 +5,15 @@ body {
 
 #mainNav {
     padding: 0.5em;
-    font-size: 3em;
+    color: white;
     text-align: center;
     border-style: none none dotted none;
     border-width: 0.2em;
 
 
 }
+
+
 
 #topper {
     padding-top: 0.5em;
