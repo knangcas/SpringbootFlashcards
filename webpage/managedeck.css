@@ -32,4 +32,19 @@ textarea {
     resize: none;
 }
 
-textarea:sel
+#questionTextArea:disabled {
+    background-color: black;
+    color: dimgrey;
+}
+#answerTextArea:disabled {
+    background-color: black;
+    color:dimgrey;
+}
+
+#questionTextArea::placeholder {
+    color: rgb(128, 128, 128);
+}
+
+#answerTextArea::placeholder {
+    color: rgb(128, 128, 128);
+}

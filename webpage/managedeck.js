@@ -1,6 +1,8 @@
 let cardArray = [];
 let cards = "";
 let cardQty = 0;
+let newCard = true;
+let editCardActive = false;
 
 async function postData(questionText, answerText) {
     const url = "http://localhost:8080/flashcards";
@@ -53,7 +55,7 @@ async function populateList() {
     cardQty = cardArray.length;
     document.getElementById("cardQty").innerText = `${cardQty} Cards`;
 
-    listElement.appendChild(new Option(cardArray[0].question, "0", true, true));
+    listElement.appendChild(new Option(cardArray[0].question, "0", true, false));
     if (cardArray.length > 1) {
         for (let i = 1; i < cardArray.length; i++) {
             listElement.appendChild(new Option(cardArray[i].question, i.toString(), false, false));
@@ -65,11 +67,25 @@ async function populateList() {
 
 }
 
+function editButtonChange() {
+    let button = document.getElementById("saveButton");
+
+    if (button.disabled) {
+        button.disabled = false;
+    } else {
+        button.disabled = true;
+    }
+}
+
 function populateFields() {
+    newCard = false;
+    editButtonChange();
+    let cancelButton = document.getElementById("cancelButton");
+    cancelButton.disabled = true;
     console.log("populateFields called");
-    questionField = document.getElementById("questionTextArea");
-    answerField = document.getElementById("answerTextArea");
-    listElement = document.getElementById("cardList");
+    let questionField = document.getElementById("questionTextArea");
+    let answerField = document.getElementById("answerTextArea");
+    let listElement = document.getElementById("cardList");
 
     let index = Number(listElement.value)
     console.log(cardArray[index].question)
@@ -94,14 +110,76 @@ async function updateData(id,questionText,answerText) {
     }
 }
 
-function saveCard() {
-    questionField = document.getElementById("questionTextArea");
-    answerField = document.getElementById("answerTextArea");
-    listElement = document.getElementById("cardList");
+function changeTextAreaStatus() {
+    let questionArea = document.getElementById("questionTextArea");
+    let answerArea = document.getElementById("answerTextArea");
 
-    let index = Number(listElement.value)
-    listElement.options[listElement.selectedIndex].innerText = questionField.value;
-    updateData(cardArray[index].cardID, questionField.value, answerField.value);
+    if (answerArea.disabled || questionArea.disabled) {
+        answerArea.disabled = false;
+        questionArea.disabled = false;
+    } else {
+        answerArea.disabled = true;
+        questionArea.disabled = true;
+    }
+}
+function changedTextArea() {
+    let cancelButton = document.getElementById("cancelButton");
+    if (!newCard) {
+        cancelButton.disabled = false;
+    }
+}
+
+function editCard() {
+    let button = document.getElementById("saveButton");
+    changeTextAreaStatus();
+    button.innerText = "Save Card";
+    button.setAttribute("onclick", "saveCard()");
+
+
+}
+function saveCard() {
+    let button = document.getElementById("saveButton");
+    let questionField = document.getElementById("questionTextArea");
+    let answerField = document.getElementById("answerTextArea");
+    let listElement = document.getElementById("cardList");
+
+    let index = Number(listElement.value);
+    if (!newCard) {
+        listElement.options[listElement.selectedIndex].innerText = questionField.value;
+        updateData(cardArray[index].cardID, questionField.value, answerField.value);
+    } else {
+        listElement.appendChild(new Option(questionField.value, (cardArray.length + 1).toString(), false, false));
+        postData(questionField.value, answerField.value);
+    }
+
+}
+
+function addCard() {
+    newCard = true;
+    changeTextAreaStatus();
+    //todo work on disabling buttons given a state
+    let cancelButton = document.getElementById("cancelButton");
+    cancelButton.disabled = false;
+    let listElement = document.getElementById("cardList");
+    listElement.selectedIndex = -1;
+    let questionField = document.getElementById("questionTextArea");
+    let answerField = document.getElementById("answerTextArea");
+    questionField.value = "";
+    answerField.value = "";
+    questionField.placeholder = "Enter your question here...";
+    answerField.placeholder = "Enter your answer here...";
+
+}
+
+function cancelCard() {
+    let questionField = document.getElementById("questionTextArea");
+    let answerField = document.getElementById("answerTextArea");
+    let listElement = document.getElementById("cardList");
+
+    listElement.selectedIndex = -1;
+    questionField.value = "";
+    answerField.value = "";
+    document.getElementById("cancelButton").disabled = true;
 }
 
 populateList()
