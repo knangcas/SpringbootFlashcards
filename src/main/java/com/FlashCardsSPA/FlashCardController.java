@@ -6,8 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:63342")
 @RestController
 public class FlashCardController {
 
@@ -32,7 +33,11 @@ public class FlashCardController {
         return ResponseEntity.ok(repository.save(flashcard));
     }
 
-
+    @PutMapping ("/flashcards/{id}")
+    ResponseEntity<FlashCard> updateFlashCard(@PathVariable("id") Long id, @RequestBody FlashCard flashCard) {
+        flashCard.setCardID(id);
+        return ResponseEntity.ok(repository.save(flashCard));
+    }
 
 
 }

@@ -12,7 +12,7 @@
 <nav id="mainNav"><h1 class = "display-1 text-center">FLASHcards</h1>
     <ul class="nav justify-content-center ">
         <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="#">- Study - </a>
+            <a class="nav-link active text-white" aria-current="page" href="/FlashCardsSPA/webpage/index.html">- Study - </a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="/FlashCardsSPA/webpage/managedeck.html">- Manage Deck -</a>
@@ -21,29 +21,39 @@
     </ul>
 </nav>
 <Br>
-<br>
+
 <div class = "container ">
+    <div class = "row row-cols-1">
+        <div class = "col text-center"> <h1 class = "display-4">Manage Deck</h1></div>
+    </div>
+    <div class = " row row-cols-1">
+        <div class = "col text-center" id="cardQty">xx Cards</div>
+    </div>
+    <br>
     <div class ="row row-cols-2">
     <div class="col-6">
-        Select a question: <br>
-            <select class="form-select selectionBG" size="20">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option >Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+        Select a FlashCard: <br>
+            <select class="form-select selectionBG" id="cardList" size="20" onchange="populateFields()">
+
             </select>
     </div>
     <div class = "col">
+
+
         Question:
-        <textarea id="questionTextArea" class="form-control selectionBG" rows ="5" >blah</textarea>
+        <textarea id="questionTextArea" class="form-control selectionBG" rows ="9" >blah</textarea>
 
         Answer:
-        <textarea id="answerTextArea" class="form-control selectionBG" rows ="5" >blah</textarea>
+        <textarea id="answerTextArea" class="form-control selectionBG" rows ="9" >blah</textarea><br>
+<!--        <label for="deckName">Deck Name</label>-->
+<!--        <input id="deckName" class = "select selectionBG">-->
+
     </div>
+    </div>
+    <div class = "row">
+        <div class ="col text-end">
+            <button class ="btn btn-primary btn-sm" onclick="saveCard()">Save Card</button>
+        </div>
     </div>
 </div>
 
