@@ -1,5 +1,9 @@
 package com.FlashCardsSPA;
 
+import com.FlashCardsSPA.model.FlashCard;
+import com.FlashCardsSPA.model.FlashCardDeck;
+import com.FlashCardsSPA.repository.FlashCardDeckRepository;
+import com.FlashCardsSPA.repository.FlashCardRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
