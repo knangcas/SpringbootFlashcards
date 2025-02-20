@@ -9,7 +9,7 @@ public class FlashCard {
 
     public FlashCard() {}
 
-    FlashCard(String question, String answer, long deckID) {
+    public FlashCard(String question, String answer, long deckID) {
         this.question = question;
         this.answer = answer;
         this.deckID = deckID;
