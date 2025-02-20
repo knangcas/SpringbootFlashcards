@@ -3,11 +3,13 @@ let cards = "";
 let cardQty = 0;
 let newCardActive = true;
 const button = document.getElementById("saveButton");
-const  listElement = document.getElementById("cardList");
-const  questionField = document.getElementById("questionTextArea");
-const  answerField = document.getElementById("answerTextArea");
-const  cancelButton = document.getElementById("cancelButton");
-const  newCard = document.getElementById("newCard");
+const listElement = document.getElementById("cardList");
+const questionField = document.getElementById("questionTextArea");
+const answerField = document.getElementById("answerTextArea");
+const cancelButton = document.getElementById("cancelButton");
+const newCard = document.getElementById("newCard");
+const cardListDiv = document.getElementById("cardListDiv");
+const textAreasDiv = document.getElementById("textAreasDiv");
 async function postData(questionText, answerText) {
     const url = "http://localhost:8080/flashcards";
 
@@ -109,6 +111,25 @@ function changeTextAreaInActive() {
     answerField.disabled = true;
     questionField.disabled = true;
 }
+
+function swapToTextAreas() {
+    const defaultClass = "btn btn-primary btn-sm"
+    cardListDiv.setAttribute("class", "row displayNone");
+    textAreasDiv.setAttribute("class", "row");
+    cancelButton.setAttribute("class", defaultClass);
+    button.setAttribute("class", defaultClass);
+    newCard.setAttribute("class", "displayNone");
+}
+
+function swapToCardList() {
+    const defaultClass = "btn btn-primary btn-sm"
+    cardListDiv.setAttribute("class", "row");
+    textAreasDiv.setAttribute("class", "row displayNone");
+    cancelButton.setAttribute("class", "displayNone");
+    button.setAttribute("class", "displayNone");
+    newCard.setAttribute("class", defaultClass);
+}
+
 function changedTextArea() {
     if (!newCardActive) {
         cancelButton.disabled = false;
@@ -156,10 +177,14 @@ function saveCard() {
     button.disabled = true;
     changeToEditButton();
     cancelButton.disabled = false;
+    swapToCardList();
+    //todo add toast
+
 
 }
 
 function addNewCard() {
+    swapToTextAreas();
     newCardActive = true;
     newCard.disabled = true;
     changeTextAreaActive();
@@ -184,6 +209,7 @@ function cancelCard() {
     listElement.selectedIndex = -1;
     questionField.value = "";
     answerField.value = "";
+    swapToCardList();
 }
 
 function changeToEditButton(){
