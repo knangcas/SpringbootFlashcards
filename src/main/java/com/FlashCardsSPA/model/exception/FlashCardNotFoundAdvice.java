@@ -1,4 +1,5 @@
-package com.FlashCardsSPA;
+package com.FlashCardsSPA.model.exception;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -6,11 +7,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class FlashCardDeckNotFoundAdvice {
+public class FlashCardNotFoundAdvice {
 
-    @ExceptionHandler(FlashCardDeckNotFoundException.class)
+    @ExceptionHandler(FlashCardNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String flashCardDeckNotFoundHandler(FlashCardDeckNotFoundException ex) {
+    String flashcardNotFoundHandler(FlashCardNotFoundException ex) {
         return ex.getMessage();
     }
+
 }
