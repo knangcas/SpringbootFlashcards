@@ -1,7 +1,7 @@
 let cardArray = [];
 let cards = "";
 let cardQty = 0;
-let newCard = true;
+let newCardActive = true;
 let editCardActive = false;
 
 async function postData(questionText, answerText) {
@@ -38,6 +38,8 @@ async function getData() {
 
         const json = await response.json();
         console.log(json);
+        changeTextAreaInActive()
+
         return JSON.stringify(json);
 
     } catch (error) {
@@ -61,7 +63,7 @@ async function populateList() {
             listElement.appendChild(new Option(cardArray[i].question, i.toString(), false, false));
         }
     }
-
+    document.getElementById("saveButton").disabled = true;
     console.log(listElement.selectedIndex);
 
 
@@ -78,8 +80,11 @@ function editButtonChange() {
 }
 
 function populateFields() {
-    newCard = false;
-    editButtonChange();
+    newCardActive = false;
+    let button = document.getElementById("saveButton");
+    if (button.disabled) {
+        button.disabled = false;
+    }
     let cancelButton = document.getElementById("cancelButton");
     cancelButton.disabled = true;
     console.log("populateFields called");
@@ -110,32 +115,61 @@ async function updateData(id,questionText,answerText) {
     }
 }
 
-function changeTextAreaStatus() {
+function changeTextAreaActive() {
     let questionArea = document.getElementById("questionTextArea");
     let answerArea = document.getElementById("answerTextArea");
 
     if (answerArea.disabled || questionArea.disabled) {
         answerArea.disabled = false;
         questionArea.disabled = false;
-    } else {
-        answerArea.disabled = true;
-        questionArea.disabled = true;
     }
+}
+
+function changeTextAreaInActive() {
+    let questionArea = document.getElementById("questionTextArea");
+    let answerArea = document.getElementById("answerTextArea");
+
+
+    answerArea.disabled = true;
+    questionArea.disabled = true;
+
 }
 function changedTextArea() {
     let cancelButton = document.getElementById("cancelButton");
-    if (!newCard) {
+    let saveButton = document.getElementById("saveButton");
+    let questionArea = document.getElementById("questionTextArea");
+    let answerArea = document.getElementById("answerTextArea");
+    if (!newCardActive) {
         cancelButton.disabled = false;
+
+    } else {
+        saveButton.disabled = false;
+        if (questionArea.value.length === 0 || answerArea.value.length === 0) {
+            saveButton.disabled = true;
+        }
     }
+
+
+
+
 }
 
 function editCard() {
     let button = document.getElementById("saveButton");
-    changeTextAreaStatus();
+    changeTextAreaActive();
+    button.disabled = true;
     button.innerText = "Save Card";
     button.setAttribute("onclick", "saveCard()");
+    document.getElementById("cancelButton").disabled = false;
 
 
+}
+
+function enableSaveButton() {
+    let button = document.getElementById("saveButton");
+    button.disabled = false;
+    button.innerText = "Save Card";
+    button.setAttribute("onclick", "saveCard()");
 }
 function saveCard() {
     let button = document.getElementById("saveButton");
@@ -144,7 +178,7 @@ function saveCard() {
     let listElement = document.getElementById("cardList");
 
     let index = Number(listElement.value);
-    if (!newCard) {
+    if (!newCardActive) {
         listElement.options[listElement.selectedIndex].innerText = questionField.value;
         updateData(cardArray[index].cardID, questionField.value, answerField.value);
     } else {
@@ -154,14 +188,18 @@ function saveCard() {
 
 }
 
-function addCard() {
-    newCard = true;
-    changeTextAreaStatus();
+function newCard() {
+    newCardActive = true;
+
+    changeTextAreaActive();
+    enableSaveButton();
+    document.getElementById("saveButton").disabled = true;
     //todo work on disabling buttons given a state
     let cancelButton = document.getElementById("cancelButton");
     cancelButton.disabled = false;
     let listElement = document.getElementById("cardList");
     listElement.selectedIndex = -1;
+    listElement.disabled = true;
     let questionField = document.getElementById("questionTextArea");
     let answerField = document.getElementById("answerTextArea");
     questionField.value = "";
@@ -175,11 +213,22 @@ function cancelCard() {
     let questionField = document.getElementById("questionTextArea");
     let answerField = document.getElementById("answerTextArea");
     let listElement = document.getElementById("cardList");
-
+    listElement.disabled = false;
+    if (newCardActive) {
+        changeToEditButton();
+        document.getElementById("cancelButton").disabled = true;
+    }
+    changeTextAreaInActive();
     listElement.selectedIndex = -1;
     questionField.value = "";
     answerField.value = "";
     document.getElementById("cancelButton").disabled = true;
+}
+
+function changeToEditButton(){
+    let button = document.getElementById("saveButton");
+    button.setAttribute("onclick", "editCard()");
+    button.innerText = "Edit Card";
 }
 
 populateList()

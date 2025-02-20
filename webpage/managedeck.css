@@ -32,6 +32,11 @@ textarea {
     resize: none;
 }
 
+#cardList:disabled {
+    background-color: black;
+    color:dimgrey;
+}
+
 #questionTextArea:disabled {
     background-color: black;
     color: dimgrey;

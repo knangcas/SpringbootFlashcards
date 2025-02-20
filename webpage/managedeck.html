@@ -44,7 +44,7 @@
         <textarea disabled id="questionTextArea" onkeyup="changedTextArea()" placeholder = "Enter your question here..." class="form-control selectionBG" onchange="changedTextArea()" rows ="9" on></textarea>
 
         Answer:
-        <textarea disabled id="answerTextArea" onkeyup="changedTextArea()" placeholder = "Enter your answer here..." class="form-control selectionBG" onchance="changedTextArea()" rows ="9" ></textarea><br>
+        <textarea disabled id="answerTextArea" onkeyup="changedTextArea()" placeholder = "Enter your answer here..." class="form-control selectionBG" onchange="changedTextArea()" rows ="9" ></textarea><br>
 <!--        <label for="deckName">Deck Name</label>-->
 <!--        <input id="deckName" class = "select selectionBG">-->
 
@@ -52,11 +52,11 @@
     </div>
     <div class = "row row-cols-2">
         <div class ="col text-end">
-            <button class ="btn btn-primary btn-sm" onclick="addCard()">New Card</button>
+            <button class ="btn btn-primary btn-sm" onclick="newCard()">New Card</button>
         </div>
         <div class ="col text-end">
             <button id ="cancelButton" class ="btn btn-primary btn-sm" disabled onclick="cancelCard()">Cancel</button>
-            <button disabled id ="saveButton" class ="btn btn-primary btn-sm" onclick="saveCard()">Edit Card</button>
+            <button  id ="saveButton" class ="btn btn-primary btn-sm" onclick="editCard()" disabled >Edit Card</button>
         </div>
     </div>
 </div>
