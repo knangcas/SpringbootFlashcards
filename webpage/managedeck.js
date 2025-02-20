@@ -52,7 +52,6 @@ async function getData() {
 }
 
 async function populateList() {
-    listElement = document.getElementById("cardList");
     cards = JSON.parse(await getData());
     for(let i = 0; i < cards.cards.length; i++) {
         cardArray[i] = {question: cards.cards[i].question, answer: cards.cards[i].answer, cardID : cards.cards[i].cardID}
