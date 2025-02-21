@@ -53,3 +53,7 @@ textarea {
 #answerTextArea::placeholder {
     color: rgb(128, 128, 128);
 }
+
+.displayNone {
+    display: none;
+}

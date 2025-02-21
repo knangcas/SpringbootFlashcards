@@ -30,35 +30,40 @@
         <div class = "col text-center" id="cardQty">xx Cards</div>
     </div>
     <br>
-    <div class ="row row-cols-2">
-    <div class="col-6">
-        Select a FlashCard: <br>
+    <div class ="row" id="cardListDiv">
+        <div class="col">
+            Select a FlashCard: <br>
             <select class="form-select selectionBG" id="cardList" size="21" onchange="populateFields()">
 
             </select>
-    </div>
-    <div class = "col">
-
-
-        Question:
-        <textarea disabled id="questionTextArea" onkeyup="changedTextArea()"  class="form-control selectionBG" onchange="changedTextArea()" rows ="9" on></textarea>
-
-        Answer:
-        <textarea disabled id="answerTextArea" onkeyup="changedTextArea()"  class="form-control selectionBG" onchange="changedTextArea()" rows ="9" ></textarea><br>
-
-
-    </div>
-    </div>
-    <div class = "row row-cols-2">
-        <div class ="col text-end">
-            <button id="newCard" class ="btn btn-primary btn-sm" onclick="addNewCard()">New Card</button>
         </div>
+    </div>
+    <div class = "row displayNone" id="textAreasDiv">
+        <div class = "col " >
+
+
+            Question:
+            <textarea disabled id="questionTextArea" onkeyup="changedTextArea()"  class="form-control selectionBG" onchange="changedTextArea()" rows ="9" on></textarea>
+
+            Answer:
+            <textarea disabled id="answerTextArea" onkeyup="changedTextArea()"  class="form-control selectionBG" onchange="changedTextArea()" rows ="9" ></textarea><br>
+
+
+        </div>
+    </div>
+    <div class = "row ">
         <div class ="col text-end">
-            <button id ="cancelButton" class ="btn btn-primary btn-sm" disabled onclick="cancelCard()">Cancel</button>
-            <button  id ="saveButton" class ="btn btn-primary btn-sm" onclick="editCard()" disabled >Edit Card</button>
+            <button id="deleteCard" disabled class = "btn btn-primary btn-sm" onclick="deleteCard()">Delete Card</button>
+            <button id="newCard" class ="btn btn-primary btn-sm" onclick="addNewCard()">New Card</button>
+<!--            todo add remove card button-->
+
+            <button id ="cancelButton" class ="btn btn-primary btn-sm displayNone" disabled onclick="cancelCard()">Cancel</button>
+            <button  id ="saveButton" class ="btn btn-primary btn-sm" onclick="editCard()"  >Edit Card</button>
         </div>
     </div>
 </div>
+
+
 
 <script src="javascript/managedeck.js"></script>
 

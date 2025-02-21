@@ -3,11 +3,14 @@ let cards = "";
 let cardQty = 0;
 let newCardActive = true;
 const button = document.getElementById("saveButton");
-const  listElement = document.getElementById("cardList");
-const  questionField = document.getElementById("questionTextArea");
-const  answerField = document.getElementById("answerTextArea");
-const  cancelButton = document.getElementById("cancelButton");
-const  newCard = document.getElementById("newCard");
+const listElement = document.getElementById("cardList");
+const questionField = document.getElementById("questionTextArea");
+const answerField = document.getElementById("answerTextArea");
+const cancelButton = document.getElementById("cancelButton");
+const newCard = document.getElementById("newCard");
+const cardListDiv = document.getElementById("cardListDiv");
+const textAreasDiv = document.getElementById("textAreasDiv");
+const deleteCard = document.getElementById("deleteCard");
 async function postData(questionText, answerText) {
     const url = "http://localhost:8080/flashcards";
 
@@ -82,6 +85,8 @@ function populateFields() {
     console.log(cardArray[index].question)
     questionField.value = cardArray[index].question;
     answerField.value= cardArray[index].answer;
+    button.setAttribute("class", "btn btn-primary btn-sm")
+    deleteCard.disabled = false;
 }
 
 
@@ -109,18 +114,39 @@ function changeTextAreaInActive() {
     answerField.disabled = true;
     questionField.disabled = true;
 }
+
+function swapToTextAreas() {
+    const defaultClass = "btn btn-primary btn-sm"
+    cardListDiv.setAttribute("class", "row displayNone");
+    textAreasDiv.setAttribute("class", "row");
+    cancelButton.setAttribute("class", defaultClass);
+    button.setAttribute("class", defaultClass);
+    newCard.setAttribute("class", "displayNone");
+    deleteCard.setAttribute("class", "displayNone");
+}
+
+function swapToCardList() {
+    const defaultClass = "btn btn-primary btn-sm"
+    cardListDiv.setAttribute("class", "row");
+    textAreasDiv.setAttribute("class", "row displayNone");
+    cancelButton.setAttribute("class", "displayNone");
+    newCard.setAttribute("class", defaultClass);
+    deleteCard.setAttribute("class", defaultClass);
+    deleteCard.disabled = true;
+}
+
 function changedTextArea() {
     if (!newCardActive) {
         cancelButton.disabled = false;
         if (questionField.value !== cardArray[listElement.selectedIndex].question || answerField.value !== cardArray[listElement.selectedIndex].answer) {
-            saveButton.disabled = false;
+            button.disabled = false;
         } else {
-            saveButton.disabled = true;
+            button.disabled = true;
         }
     } else {
-        saveButton.disabled = false;
+        button.disabled = false;
         if (questionField.value.length === 0 || answerField.value.length === 0) {
-            saveButton.disabled = true;
+            button.disabled = true;
         }
     }
 
@@ -129,6 +155,7 @@ function changedTextArea() {
 function editCard() {
     listElement.disabled = true;
     changeTextAreaActive();
+    swapToTextAreas();
     button.disabled = true;
     button.innerText = "Save Card";
     button.setAttribute("onclick", "saveCard()");
@@ -156,10 +183,14 @@ function saveCard() {
     button.disabled = true;
     changeToEditButton();
     cancelButton.disabled = false;
+    swapToCardList();
+    //todo add toast
+
 
 }
 
 function addNewCard() {
+    swapToTextAreas();
     newCardActive = true;
     newCard.disabled = true;
     changeTextAreaActive();
@@ -184,6 +215,7 @@ function cancelCard() {
     listElement.selectedIndex = -1;
     questionField.value = "";
     answerField.value = "";
+    swapToCardList();
 }
 
 function changeToEditButton(){
