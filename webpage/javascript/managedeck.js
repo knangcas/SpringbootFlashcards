@@ -10,7 +10,7 @@ const cancelButton = document.getElementById("cancelButton");
 const newCard = document.getElementById("newCard");
 const cardListDiv = document.getElementById("cardListDiv");
 const textAreasDiv = document.getElementById("textAreasDiv");
-const deleteCard = document.getElementById("deleteCard");
+const deleteCardButton = document.getElementById("deleteCard");
 async function postData(questionText, answerText) {
     const url = "http://localhost:8080/flashcards";
 
@@ -86,7 +86,7 @@ function populateFields() {
     questionField.value = cardArray[index].question;
     answerField.value= cardArray[index].answer;
     button.setAttribute("class", "btn btn-primary btn-sm")
-    deleteCard.disabled = false;
+    deleteCardButton.disabled = false;
 }
 
 
@@ -103,6 +103,28 @@ async function updateData(id,questionText,answerText) {
     } catch (error) {
         console.error(error.message);
     }
+}
+
+async function deleteData(id) {
+    const url = `http://localhost:8080/flashcards/${id}`
+    try {
+        const response = await fetch(url, {method: 'DELETE'});
+
+        if (!response.ok) {
+            throw new Error(`Response Status : ${response.status}`)
+        }
+        ;
+
+    } catch (error) {
+        console.error(error.message);
+    }
+
+}
+
+function deleteCard() {
+    let cardID = cardArray[listElement.selectedIndex].cardID;
+    deleteData(cardID);
+    //todo could be a problem with selectedIndex updating after deleting cards.
 }
 
 function changeTextAreaActive() {
@@ -122,7 +144,7 @@ function swapToTextAreas() {
     cancelButton.setAttribute("class", defaultClass);
     button.setAttribute("class", defaultClass);
     newCard.setAttribute("class", "displayNone");
-    deleteCard.setAttribute("class", "displayNone");
+    deleteCardButton.setAttribute("class", "displayNone");
 }
 
 function swapToCardList() {
@@ -131,8 +153,8 @@ function swapToCardList() {
     textAreasDiv.setAttribute("class", "row displayNone");
     cancelButton.setAttribute("class", "displayNone");
     newCard.setAttribute("class", defaultClass);
-    deleteCard.setAttribute("class", defaultClass);
-    deleteCard.disabled = true;
+    deleteCardButton.setAttribute("class", defaultClass);
+    deleteCardButton.disabled = true;
 }
 
 function changedTextArea() {
