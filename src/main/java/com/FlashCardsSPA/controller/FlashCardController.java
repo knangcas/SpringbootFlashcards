@@ -1,11 +1,15 @@
 package com.FlashCardsSPA.controller;
 
 
+import com.FlashCardsSPA.model.exception.DeleteOKResponse;
+import com.FlashCardsSPA.model.exception.FlashCardDeckNotFoundException;
+import com.FlashCardsSPA.model.exception.FlashCardNotFoundResponse;
 import com.FlashCardsSPA.repository.FlashCardRepository;
 import com.FlashCardsSPA.model.FlashCard;
 import com.FlashCardsSPA.model.exception.FlashCardNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +34,13 @@ public class FlashCardController {
                 .orElseThrow(()-> new FlashCardNotFoundException(id));
     }
 
+    @DeleteMapping("/flashcards/{id}")
+    ResponseEntity<?> deleteOne(@PathVariable Long id) {
+        one(id);
+        repository.deleteById(id);
+        return new ResponseEntity<>(new DeleteOKResponse(""), HttpStatus.NO_CONTENT);
+    }
+
     @PostMapping("/flashcards")
     ResponseEntity<FlashCard> newFlashCard(@RequestBody FlashCard flashcard) {
         return ResponseEntity.ok(repository.save(flashcard));
@@ -39,6 +50,11 @@ public class FlashCardController {
     ResponseEntity<FlashCard> updateFlashCard(@PathVariable("id") Long id, @RequestBody FlashCard flashCard) {
         flashCard.setCardID(id);
         return ResponseEntity.ok(repository.save(flashCard));
+    }
+
+    @ExceptionHandler(value = FlashCardNotFoundException.class)
+    public ResponseEntity<?> handleFlashCardNotFoundException(FlashCardNotFoundException e) {
+        return new ResponseEntity<>(new FlashCardNotFoundResponse(e.getMessage()), HttpStatus.NOT_FOUND);
     }
 
 
