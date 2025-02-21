@@ -1,5 +1,5 @@
 # FlashCards-SPA
-last updated: February 17th, 2025
+last updated: February 20th, 2025
 ## About
 
 - THis is a web app version of [FlashCards](https://github.com/knangcas/FlashCards)
