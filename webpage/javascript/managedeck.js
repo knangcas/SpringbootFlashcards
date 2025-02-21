@@ -82,7 +82,7 @@ function populateFields() {
     let cancelButton = document.getElementById("cancelButton");
     cancelButton.disabled = true;
     console.log("populateFields called");
-    let index = Number(listElement.value)
+    let index = listElement.selectedIndex;
     console.log(cardArray[index].question)
     questionField.value = cardArray[index].question;
     answerField.value= cardArray[index].answer;
@@ -211,6 +211,7 @@ function saveCard() {
     changeToEditButton();
     cancelButton.disabled = false;
     swapToCardList();
+    cardQtyText.innerText = `${cardQty} Cards`;
     //todo add toast
 
 
@@ -223,6 +224,7 @@ function addNewCard() {
     changeTextAreaActive();
     enableSaveButton();
     button.disabled = true;
+    button.innerText = "Add Card";
     cancelButton.disabled = false;
     listElement.selectedIndex = -1;
     listElement.disabled = true;
