@@ -125,6 +125,8 @@ function deleteCard() {
     let cardID = cardArray[listElement.selectedIndex].cardID;
     deleteData(cardID);
     //todo could be a problem with selectedIndex updating after deleting cards.
+    //solution 1 : resort cardArray so that there is no gaps
+
 }
 
 function changeTextAreaActive() {
