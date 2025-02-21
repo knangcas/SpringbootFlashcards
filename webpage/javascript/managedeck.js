@@ -2,6 +2,7 @@ let cardArray = [];
 let cards = "";
 let cardQty = 0;
 let newCardActive = true;
+const cardQtyText = document.getElementById("cardQty");
 const button = document.getElementById("saveButton");
 const listElement = document.getElementById("cardList");
 const questionField = document.getElementById("questionTextArea");
@@ -60,14 +61,14 @@ async function populateList() {
         cardArray[i] = {question: cards.cards[i].question, answer: cards.cards[i].answer, cardID : cards.cards[i].cardID}
     }
     cardQty = cardArray.length;
-    document.getElementById("cardQty").innerText = `${cardQty} Cards`;
+    cardQtyText.innerText = `${cardQty} Cards`;
     listElement.appendChild(new Option(cardArray[0].question, "0", true, false));
     if (cardArray.length > 1) {
         for (let i = 1; i < cardArray.length; i++) {
             listElement.appendChild(new Option(cardArray[i].question, i.toString(), false, false));
         }
     }
-    document.getElementById("saveButton").disabled = true;
+    button.disabled = true;
     console.log(listElement.selectedIndex);
 }
 
@@ -123,9 +124,11 @@ async function deleteData(id) {
 
 function deleteCard() {
     let cardID = cardArray[listElement.selectedIndex].cardID;
-    deleteData(cardID);
-    //todo could be a problem with selectedIndex updating after deleting cards.
-    //solution 1 : resort cardArray so that there is no gaps
+    cardArray.splice(listElement.selectedIndex, 1);
+    console.log(cardArray);
+    deleteData(cardID).then(listElement.remove(listElement.selectedIndex));
+    cardQty = cardArray.length;
+    cardQtyText.innerText = `${cardQty} Cards`;
 
 }
 
