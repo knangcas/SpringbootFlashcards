@@ -10,6 +10,7 @@ const cancelButton = document.getElementById("cancelButton");
 const newCard = document.getElementById("newCard");
 const cardListDiv = document.getElementById("cardListDiv");
 const textAreasDiv = document.getElementById("textAreasDiv");
+const deleteCard = document.getElementById("deleteCard");
 async function postData(questionText, answerText) {
     const url = "http://localhost:8080/flashcards";
 
@@ -84,6 +85,8 @@ function populateFields() {
     console.log(cardArray[index].question)
     questionField.value = cardArray[index].question;
     answerField.value= cardArray[index].answer;
+    button.setAttribute("class", "btn btn-primary btn-sm")
+    deleteCard.disabled = false;
 }
 
 
@@ -119,6 +122,7 @@ function swapToTextAreas() {
     cancelButton.setAttribute("class", defaultClass);
     button.setAttribute("class", defaultClass);
     newCard.setAttribute("class", "displayNone");
+    deleteCard.setAttribute("class", "displayNone");
 }
 
 function swapToCardList() {
@@ -126,22 +130,23 @@ function swapToCardList() {
     cardListDiv.setAttribute("class", "row");
     textAreasDiv.setAttribute("class", "row displayNone");
     cancelButton.setAttribute("class", "displayNone");
-    button.setAttribute("class", "displayNone");
     newCard.setAttribute("class", defaultClass);
+    deleteCard.setAttribute("class", defaultClass);
+    deleteCard.disabled = true;
 }
 
 function changedTextArea() {
     if (!newCardActive) {
         cancelButton.disabled = false;
         if (questionField.value !== cardArray[listElement.selectedIndex].question || answerField.value !== cardArray[listElement.selectedIndex].answer) {
-            saveButton.disabled = false;
+            button.disabled = false;
         } else {
-            saveButton.disabled = true;
+            button.disabled = true;
         }
     } else {
-        saveButton.disabled = false;
+        button.disabled = false;
         if (questionField.value.length === 0 || answerField.value.length === 0) {
-            saveButton.disabled = true;
+            button.disabled = true;
         }
     }
 
@@ -150,6 +155,7 @@ function changedTextArea() {
 function editCard() {
     listElement.disabled = true;
     changeTextAreaActive();
+    swapToTextAreas();
     button.disabled = true;
     button.innerText = "Save Card";
     button.setAttribute("onclick", "saveCard()");

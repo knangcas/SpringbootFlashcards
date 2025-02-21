@@ -53,11 +53,12 @@
     </div>
     <div class = "row ">
         <div class ="col text-end">
+            <button id="deleteCard" disabled class = "btn btn-primary btn-sm" onclick="deleteCard()">Delete Card</button>
             <button id="newCard" class ="btn btn-primary btn-sm" onclick="addNewCard()">New Card</button>
 <!--            todo add remove card button-->
 
             <button id ="cancelButton" class ="btn btn-primary btn-sm displayNone" disabled onclick="cancelCard()">Cancel</button>
-            <button  id ="saveButton" class ="btn btn-primary btn-sm displayNone" onclick="editCard()" disabled >Edit Card</button>
+            <button  id ="saveButton" class ="btn btn-primary btn-sm" onclick="editCard()"  >Edit Card</button>
         </div>
     </div>
 </div>
