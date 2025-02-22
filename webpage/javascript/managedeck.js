@@ -204,7 +204,9 @@ function saveCard() {
     } else {
         listElement.appendChild(new Option(questionField.value, (cardArray.length + 1).toString(), false, false));
         postData(questionField.value, answerField.value);
+
     }
+    cardQty = cardArray.length;
     newCard.disabled = false;
     listElement.disabled = false;
     button.disabled = true;
