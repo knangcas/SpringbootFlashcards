@@ -196,15 +196,16 @@ function enableSaveButton() {
     button.innerText = "Save Card";
     button.setAttribute("onclick", "saveCard()");
 }
-function saveCard() {
+async function saveCard() {
     let index = Number(listElement.value);
     if (!newCardActive) {
         listElement.options[listElement.selectedIndex].innerText = questionField.value;
         updateData(cardArray[index].cardID, questionField.value, answerField.value);
     } else {
         listElement.appendChild(new Option(questionField.value, (cardArray.length + 1).toString(), false, false));
-        postData(questionField.value, answerField.value);
-
+        let newFlashCard = JSON.parse(await postData(questionField.value, answerField.value));
+        //console.log(newFlashCard);
+        cardArray.push({question: newFlashCard.question, answer: newFlashCard.value, cardID: newFlashCard.cardID})
     }
     cardQty = cardArray.length;
     newCard.disabled = false;
