@@ -104,7 +104,12 @@ function nextCard() {
 
 function endDeck() {
     const element = document.getElementById('nextButton');
-    element.innerHTML = "Load skipped cards";
+    if (skippedQty > 0) {
+        element.innerHTML = "Load skipped cards";
+    } else {
+        document.getElementById("skipButton").disabled = true;
+        element.disabled = true;
+    }
 
 }
 
@@ -122,7 +127,10 @@ function restart() {
     const element = document.getElementById('flashCardContent');
     element.innerText = cardArray[++qIndex].question;
     document.getElementById("nextButton").innerText = "Next";
+    document.getElementById("nextButton").disabled = false;
+    document.getElementById("skipButton").disabled = false;
     updateProgress();
+
 }
 
 function skip(){
