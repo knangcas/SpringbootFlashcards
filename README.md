@@ -1,14 +1,17 @@
 # FlashCards-SPA
-last updated: February 22nd, 2025
+last updated: March 25th, 2025
 ## About
 
 - This is a web app version of [FlashCards](https://github.com/knangcas/FlashCards)
 - VanillaJS implementation with bootstrap css. User can click on the flashcard to "flip" and see the answer.
 - Uses Java SpringBoot with embedded h2 database for backend (RESTful api. Will make api docs to accompany the api).
-- Currently basic html/css/js for front end, mainly used just to get started.
-- Makes use of Bootstrap framework.
-- Future plans include use of MySQL (instead of h2), Docker to containerize, and use of React for frontend.
+- Currently basic html/css/js for front end, React implemenatation in progress.
+- Makes use of Bootstrap framework (for vanilla version)
 - Uses JDK17, SprintBoot 3.4.2, Gradle 8.12 
+
+### March 25th, 2025 update
+- Started React implementation. (Located in webpageReact directory)
+- Fixed CORs to accomidate. 
 
 ### February 22nd, 2025 update
 - Added Dockerfile 
@@ -21,7 +24,7 @@ docker run -d -p 8080:8080 [imageName]
 ```
 
 This will run the tomcat server for the RESTful API for the app. 
-From here, you can navigate to index.html 
+From here, you can navigate to index.html in the webpage directory.
 
  ### Screenshots
 
