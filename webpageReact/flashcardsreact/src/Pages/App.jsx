@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Axios from "axios";
 import Flashcard from "../Components/Flashcard.jsx";
+import ControlButton from "../Components/ControlButton.jsx";
 
 
 function App() {
@@ -15,17 +16,34 @@ function App() {
     }, [])
 
     async function fetchData() {
-        await Axios.get('http://localhost:8080/flashcarddecks/1')
-            .then((response) => {setDeck(response.data)}).catch((error)=>console.log(error))
+        const data = await Axios.get('http://localhost:8080/flashcarddecks/1')
+
+        setDeck(data.data);
+        console.log(deck);
     }
 
+    function handleRestart() {
+        console.log("restart func");
+    }
 
+    function handleNext() {
+        console.log("next func");
+    }
+
+    function handleSkip() {
+        console.log("skip func");
+    }
 
 
   return (
       <>
       <h2>{deck.name}</h2>
-          <Flashcard flashcard={deck.cards[0]} index={deckIndex} />
+          <Flashcard flashcard={deck.cards[0]}/>
+          <div className="controls">
+            <ControlButton control={"Restart"} func={handleRestart}></ControlButton>
+            <ControlButton control={"Next"} func={handleNext}></ControlButton>
+            <ControlButton control={"Skip"} func={handleSkip}></ControlButton>
+          </div>
       </>
   )
 }

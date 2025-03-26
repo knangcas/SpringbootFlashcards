@@ -13,3 +13,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+}

@@ -1,10 +1,52 @@
 #flashCard {
     padding: 1em 1em 1em 1em;
-    border-radius: 1em;
+    border-radius: 0.5em;
     border-style: solid;
     border-color: white;
-
+    height: 200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
     background-color: #626262;
+    transition: background-color 0.25s ease-in-out;
 
 
+}
+
+
+
+#flashCard:hover {
+    cursor: pointer;
+    background-color: #7c7c7c;
+    transition: background-color 0.5s ease-in-out;
+}
+
+
+
+.controlButton {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #626262;
+    border-radius: 0.5em;
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.nextButton{
+    background-color: #0300a9;
+}
+
+
+
+
+.controlButton:hover {
+    cursor: pointer;
+    background-color: #7c7c7c;
+    transition: background-color 1s ease-in-out;
+}
+
+.nextButton:hover{
+    background-color: #120ed2;
 }
