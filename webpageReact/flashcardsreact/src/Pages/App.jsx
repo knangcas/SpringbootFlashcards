@@ -6,12 +6,12 @@ import Axios from "axios";
 import Flashcard from "../Components/Flashcard.jsx";
 import ControlButton from "../Components/ControlButton.jsx";
 
-
+let deckIndex = 0;
+let deckLength = 0;
 function App() {
     const [deck, setDeck] = useState({cards:[]});
-    let deckIndex = 0;
-    let deckLength = 0;
     const [card, setCard] = useState({});
+    const [flip, setFlip] = useState(false);
     useEffect(()=>{
         fetchData();
         //setCard(deck.cards[deckIndex]);
@@ -22,7 +22,7 @@ function App() {
 
         setDeck(data.data);
         setCard(data.data.cards[deckIndex]);
-        deckLength = data.data.length;
+        deckLength = data.data.cards.length;
         console.log(data.data.length);
         console.log(data.data);
         console.log(card);
@@ -44,6 +44,11 @@ function App() {
             newIndex = deckIndex;
         }
         setCard(deck.cards[newIndex])
+        setFlip(false);
+    }
+
+    function handleFlip() {
+        setFlip((flip)=> !flip);
     }
 
     function handleSkip() {
@@ -55,7 +60,7 @@ function App() {
       <>
       <h2>{deck.name}</h2>
 
-          <Flashcard question={card.question} answer ={card.answer}/>
+          <Flashcard content={flip ? card.answer: card.question} flipFunc={handleFlip}/>
           <div className="controls">
             <ControlButton control={"Restart"} func={handleRestart}></ControlButton>
             <ControlButton control={"Next"} func={handleNext}></ControlButton>

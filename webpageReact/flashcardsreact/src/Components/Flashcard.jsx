@@ -1,24 +1,15 @@
 import './ComponentStyles.css'
-import {useState} from "react";
-import ControlButton from "./ControlButton.jsx";
 
 
-export default function Flashcard({question, answer}){
-    //const question = flashcard.question;
-    //const answer = flashcard.answer
-    const [flip, setFlip] = useState(false);
 
-    function handleFlip() {
-        setFlip((status)=> !status)
-    }
+export default function Flashcard({content, flipFunc}){
 
 
     return(
-        <>
-        <div onClick={handleFlip} id="flashCard">
-            {flip ? answer : question}
+
+        <div onClick={flipFunc} id="flashCard">
+            {content}
         </div>
 
-        </>
     )
 }
