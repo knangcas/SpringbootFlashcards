@@ -50,6 +50,16 @@
     background-color: #120ed2;
 }
 
+.deckList{
+    margin-top: 20px;
+    background-color: #2f2f2f;
+    color:white;
+    scrollbar-color: #120ed2 black;
+    scrollbar-width: thin;
+}
+
+
+
 
 @media (max-width: 800px) {
     #flashCard{

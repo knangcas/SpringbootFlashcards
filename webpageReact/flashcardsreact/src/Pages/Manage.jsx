@@ -1,5 +1,6 @@
 import Axios from "axios";
 import {useEffect, useState} from "react";
+import DeckList from "../Components/DeckList.jsx";
 let deckIndex = 0;
 let deckLength = 0;
 export default function Manage(){
@@ -25,7 +26,7 @@ export default function Manage(){
     }
     return (
         <>
-
+            {!editingCard && !addingCard && <DeckList cards={deck.cards}/>}
 
         </>
     )
