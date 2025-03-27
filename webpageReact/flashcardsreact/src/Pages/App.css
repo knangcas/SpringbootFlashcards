@@ -19,3 +19,9 @@
   justify-content: space-evenly;
   padding-top: 15px;
 }
+
+.mainContent {
+  display: flex;
+  justify-content: center;
+}
+

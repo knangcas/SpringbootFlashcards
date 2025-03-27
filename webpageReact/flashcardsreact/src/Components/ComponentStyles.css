@@ -5,12 +5,11 @@
     border-color: white;
     height: 200px;
     display:flex;
+    width: 80%;
     justify-content: center;
     align-items: center;
     background-color: #626262;
     transition: background-color 0.25s ease-in-out;
-
-
 }
 
 
@@ -49,4 +48,11 @@
 
 .nextButton:hover{
     background-color: #120ed2;
+}
+
+
+@media (max-width: 800px) {
+    #flashCard{
+        width: 80%;
+    }
 }

@@ -2,7 +2,7 @@ import {Outlet} from 'react-router-dom'
 import {Link} from 'react-router'
 import Axios from 'axios'
 import {useState} from "react";
-
+import './layout.css';
 
 
 export default function Layout() {

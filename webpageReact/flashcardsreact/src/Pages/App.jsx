@@ -59,8 +59,9 @@ function App() {
   return (
       <>
       <h2>{deck.name}</h2>
-
+          <div className="mainContent">
           <Flashcard content={flip ? card.answer: card.question} flipFunc={handleFlip}/>
+          </div>
           <div className="controls">
             <ControlButton control={"Restart"} func={handleRestart}></ControlButton>
             <ControlButton control={"Next"} func={handleNext}></ControlButton>
