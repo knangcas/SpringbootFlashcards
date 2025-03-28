@@ -51,11 +51,14 @@
 }
 
 .controlDisable {
-    background-color: #c0c0c0;
+    background-color: #414141;
+    color: dimgrey;
 }
 
 .controlDisable:hover {
-    background-color: #c0c0c0;
+    background-color: #414141;
+    color: dimgrey;
+    cursor: default;
 }
 
 .deckList{
@@ -70,13 +73,14 @@
 }
 
 .deckList:focus {
-    border: 0;
     outline: 0;
 }
 
+
 option {
-    padding: 4px;
+    padding: 6px;
 }
+
 
 
 
