@@ -50,12 +50,32 @@
     background-color: #120ed2;
 }
 
+.controlDisable {
+    background-color: #c0c0c0;
+}
+
+.controlDisable:hover {
+    background-color: #c0c0c0;
+}
+
 .deckList{
     margin-top: 20px;
-    background-color: #2f2f2f;
+    background-color: #484848;
+    padding:10px;
     color:white;
-    scrollbar-color: #120ed2 black;
+    scrollbar-color: #120ed2 #484848;;
     scrollbar-width: thin;
+    border: 0;
+    border-radius: 10px;
+}
+
+.deckList:focus {
+    border: 0;
+    outline: 0;
+}
+
+option {
+    padding: 4px;
 }
 
 

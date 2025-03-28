@@ -1,14 +1,12 @@
 import Axios from "axios";
 import {useEffect, useState} from "react";
-import DeckList from "../Components/DeckList.jsx";
+import DeckEdit from "../Components/DeckEdit.jsx";
 let deckIndex = 0;
 let deckLength = 0;
 export default function Manage(){
 
     const [deck, setDeck] = useState({cards:[]});
     const [card, setCard] = useState({});
-    const [editingCard, setEditingCard] = useState (false);
-    const [addingCard, setAddingCard] = useState (false);
     useEffect(()=>{
         fetchData();
         //setCard(deck.cards[deckIndex]);
@@ -26,7 +24,7 @@ export default function Manage(){
     }
     return (
         <>
-            {!editingCard && !addingCard && <DeckList cards={deck.cards}/>}
+            <DeckEdit cards={deck.cards}/>
 
         </>
     )

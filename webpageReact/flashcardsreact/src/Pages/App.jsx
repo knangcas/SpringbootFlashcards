@@ -12,6 +12,7 @@ function App() {
     const [deck, setDeck] = useState({cards:[]});
     const [card, setCard] = useState({});
     const [flip, setFlip] = useState(false);
+    const [deckStatus, setDeckStatus] = useState(false);
     useEffect(()=>{
         fetchData();
         //setCard(deck.cards[deckIndex]);
@@ -63,9 +64,9 @@ function App() {
           <Flashcard content={flip ? card.answer: card.question} flipFunc={handleFlip}/>
           </div>
           <div className="controls">
-            <ControlButton control={"Restart"} func={handleRestart}></ControlButton>
-            <ControlButton control={"Next"} func={handleNext}></ControlButton>
-            <ControlButton control={"Skip"} func={handleSkip}></ControlButton>
+            <ControlButton disabled={deckStatus} controlText={"Restart"} func={handleRestart}/>
+            <ControlButton disabled={deckStatus} controlText={"Next"} styleClass={"controlButton nextButton"} func={handleNext}/>
+            <ControlButton disabled={deckStatus} controlText={"Skip"}  func={handleSkip}/>
           </div>
       </>
   )
