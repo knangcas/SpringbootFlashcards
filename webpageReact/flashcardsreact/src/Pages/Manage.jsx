@@ -24,7 +24,7 @@ export default function Manage(){
     }
     return (
         <>
-            <DeckEdit cards={deck.cards}/>
+            <DeckEdit reloadChange={fetchData} cards={deck.cards}/>
 
         </>
     )

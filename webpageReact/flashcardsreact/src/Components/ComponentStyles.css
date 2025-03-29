@@ -81,12 +81,39 @@ option {
     padding: 6px;
 }
 
+textarea {
+    background-color: #484848;
+    border:0;
+    border-radius:10px;
+    color:white;
+    font-family: "Arial", sans-serif
+}
 
+textarea:focus{
+    outline:0;
+    color:white;
+}
 
+.addEditContent {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-
+    width: 100%;
+}
 @media (max-width: 800px) {
     #flashCard{
         width: 80%;
     }
+    .deckList{
+        width: 80%;
+    }
+    textarea {
+        width: 80%;
+    }
+    .addEditContent {
+        align-items:center;
+    }
 }
+
