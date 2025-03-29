@@ -89,8 +89,8 @@ function App() {
 
   return (
       <>
-      <h2>{deck.name}</h2>
-          <h5>{`Card ${deckIndex + 1} of ${deckLength}`}</h5>
+      <h2 className="jbFont">{deck.name}</h2>
+          <h5 className="jbFont">{`Card ${deckIndex + 1} of ${deckLength}`}</h5>
           <div className="mainContent">
               {!endDeck && <Flashcard content={flip ? card.answer: card.question} flipFunc={e=>handleFlip(e)}/>}
               {endDeck && <MessageAnimate msg="You have reached the end!"/>}
