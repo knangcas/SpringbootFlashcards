@@ -30,6 +30,9 @@ docker run -d -p 8080:8080 [imageName]
 This will run the tomcat server for the backend RESTful API. 
 From here, you can navigate to index.html in the webpage directory, or run the react version.
 
+ ### Video Demonstration 
+[![YouTube](http://i.ytimg.com/vi/dnKcK6uVPYE/hqdefault.jpg)](https://www.youtube.com/watch?v=dnKcK6uVPYE)
+
  ### Screenshots
 
 - Updated March 29th, 2025
