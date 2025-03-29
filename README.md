@@ -1,5 +1,5 @@
 # FlashCards-SPA
-last updated: March 25th, 2025
+last updated: March 29th, 2025
 ## About
 
 - This is a web app version of [FlashCards](https://github.com/knangcas/FlashCards)
@@ -28,30 +28,40 @@ From here, you can navigate to index.html in the webpage directory.
 
  ### Screenshots
 
-![Screenshot1](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss7.png?raw=true)
+- Updated March 29th, 2025
+
+![Screenshot1](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss8.png?raw=true)
 
 - Restart : returns to the initial state of the deck.
 - Next : Users click this when they know the answer.
 - Skip : Users click this when they want to skip the answer and come back to it later.
 
-![Screenshot2](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss2.png?raw=true)
+![Screenshot7](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss14.png?raw=true)
 
-- Study page after reaching the end and skipping 2 cards. User has an option of loading the skipped cards or restarting. 
+- Page view after user reaches the end of the deck without skipping a card.
 
-![Screenshot3](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss3.png?raw=true)
+![Screenshot8](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss15.png?raw=true)
 
-- Manage deck page. User can add new cards, delete cards, or edit cards. In here, I choose to delete the selected card.
+- Page view after user reaches the end of the deck when a card is skipped.
 
-![Screenshot4](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss4.png?raw=true)
+![Screenshot2](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss9.png?raw=true)
 
-- User editing a card. Save button will be active once a change has been made to either input field. 
+- Manage deck page with the current cards in the deck in a list. Delete and Edit card are disabled because there is no selection.
 
-![Screenshot5](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss5.png?raw=true)
+![Screenshot3](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss10.png?raw=true)
 
-- User adding a new card after deleting one (notice 4 cards and "Add Card" instead of "Save Card").
+- Adding a card page. Added input to both question and answer.
 
-![Screenshot6](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss6.png?raw=true)
+![Screenshot4](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss11.png?raw=true)
 
-- The new list after deleting adding the new card.
+- After the addition of a card. "Changes Saved!" pops up with animation after returning to deck list. 
+
+![Screenshot5](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss12.png?raw=true)
+
+- User selection of a card to edit.
+
+![Screenshot6](https://github.com/knangcas/SpringbootFlashcards/blob/main/screenshots/ss13.png?raw=true)
+
+- The current card to be edited. Save card is disabled because the user has not edited the fields.
 
 

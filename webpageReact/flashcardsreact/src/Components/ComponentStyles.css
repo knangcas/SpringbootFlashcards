@@ -98,6 +98,18 @@ textarea:focus{
     color:white;
 }
 
+.questionAnswerP {
+    font-family: "JetBrains Mono", sans-serif;
+    align-self: flex-start;
+}
+
+.titleManage {
+    font-family: "JetBrains Mono", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin: none;
+}
+
 .addEditContent {
     margin-top: 40px;
     display: flex;

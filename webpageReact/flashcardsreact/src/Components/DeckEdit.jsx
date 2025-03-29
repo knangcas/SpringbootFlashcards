@@ -18,6 +18,7 @@ export default function DeckEdit({reloadChange, cards}) {
         console.log("deleteFunc");
         const response = await Axios.delete(`http://localhost:8080/flashcards/${cardSelected.cardID}`);
         console.log(response);
+        setSelectedItem(false)
         reloadChange();
         savedAnimation();
     }
@@ -123,7 +124,8 @@ export default function DeckEdit({reloadChange, cards}) {
 
     return (
         <>
-            {!editingCard && !addingCard && (<><select onChange={handleChange} size={20} name="cardlist" className="deckList">
+            {!editingCard && !addingCard && (<> <p className="titleManage">Manage Deck</p>
+                <select onChange={handleChange} size={20} name="cardlist" className="deckList">
                 {cards.map(card=><option className="jbFont" key={card.cardID} value={card.cardID}>{card.question}</option>)}</select>
                 <div className="controls">
                 <ControlButton func={handleDelete} controlText={"Delete Card"} disabled={!selectedItem}/>
@@ -131,9 +133,11 @@ export default function DeckEdit({reloadChange, cards}) {
                     <ControlButton func={handleEditCard} controlText={"Edit Card"} disabled={!selectedItem}/>
             </div></>)}
             {(addingCard || editingCard) && (<><div className="addEditContent">
-                    Question:
+                    {addingCard ? <p className="titleManage">Add New Card</p> :
+                        <p className="titleManage">Edit Card</p>}
+                    <p className="questionAnswerP">Question:</p>
                     <textarea value ={editingCard ? editCard.question : newCard.question} className={"questionBox"} onChange={(e)=>{handleBoxChange(e)}} rows={9}/>
-                    Answer:
+                    <p className="questionAnswerP">Answer:</p>
                     <textarea value ={editingCard ? editCard.answer : newCard.answer} className={"answerBox"} onChange={(e)=>{handleBoxChange(e)}} rows={9}/>
                 </div>
                     <div className="controls">
