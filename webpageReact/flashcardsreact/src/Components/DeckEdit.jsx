@@ -42,11 +42,12 @@ export default function DeckEdit({cards}) {
                     <ControlButton func={addCard} controlText={"Add Card"}/>
                     <ControlButton func={handleDelete} controlText={"Edit Card"} disabled={!selectedItem}/>
             </div></>)}
-            {addingCard && (<>
+            {addingCard && (<><div className={"addEditContent"}>
                     Question:
                 <textarea rows={9}/>
                     Answer:
                     <textarea rows={9}/>
+                </div>
                 </>
             )}
         </>

@@ -25,3 +25,22 @@
   justify-content: center;
 }
 
+.addEditContent {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+textarea {
+  background-color: #484848;
+  border:0;
+  border-radius:10px;
+  color:white;
+  font-family: "Arial", sans-serif
+}
+
+textarea:focus{
+  outline:0;
+  color:white;
+}
