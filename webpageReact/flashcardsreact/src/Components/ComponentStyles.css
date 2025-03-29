@@ -88,9 +88,9 @@ textarea {
     border:0;
     border-radius:10px;
     color:white;
-    font-family: "Arial", sans-serif;
+    font-family: "JetBrains Mono", sans-serif;
     width: 900px;
-
+    padding: 25px 10px 25px 10px;
 }
 
 textarea:focus{
@@ -111,7 +111,7 @@ textarea:focus{
         width: 80%;
     }
     .deckList{
-        width: 80%;
+        width: 700px;
     }
     textarea {
         width: 80%;
@@ -123,13 +123,13 @@ textarea:focus{
 
 @media (min-width: 801px) and (max-width: 1200px) {
     #flashCard{
-        width: 80%;
+        width: 700px;
     }
     .deckList{
-        width: 900px;
+        width: 800px;
     }
     textarea {
-        width: 900px;
+        width: 700px;
     }
     .addEditContent {
         align-items:center;

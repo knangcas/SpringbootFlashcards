@@ -11,7 +11,7 @@ export default function DeckEdit({reloadChange, cards}) {
     const [newCard, setNewCard] = useState({});
     const [editCard, setEditCard] = useState ({});
     const [showAnimation, setShowAnimation] = useState(false);
-    //useEffect(()=> {console.log(newCard)}, [newCard])
+    useEffect(()=> {console.log(newCard)}, [newCard])
     console.log(cards);
 
     async function handleDelete() {
@@ -124,7 +124,7 @@ export default function DeckEdit({reloadChange, cards}) {
     return (
         <>
             {!editingCard && !addingCard && (<><select onChange={handleChange} size={20} name="cardlist" className="deckList">
-                {cards.map(card=><option  key={card.cardID} value={card.cardID}>{card.question}</option>)}</select>
+                {cards.map(card=><option className="jbFont" key={card.cardID} value={card.cardID}>{card.question}</option>)}</select>
                 <div className="controls">
                 <ControlButton func={handleDelete} controlText={"Delete Card"} disabled={!selectedItem}/>
                     <ControlButton func={addCard} controlText={"Add Card"}/>
@@ -132,9 +132,9 @@ export default function DeckEdit({reloadChange, cards}) {
             </div></>)}
             {(addingCard || editingCard) && (<><div className="addEditContent">
                     Question:
-                    <textarea value ={editingCard ? editCard.question : ""} className={"questionBox"} onChange={(e)=>{handleBoxChange(e)}} rows={9}/>
+                    <textarea value ={editingCard ? editCard.question : newCard.question} className={"questionBox"} onChange={(e)=>{handleBoxChange(e)}} rows={9}/>
                     Answer:
-                    <textarea value ={editingCard ? editCard.answer : ""} className={"answerBox"} onChange={(e)=>{handleBoxChange(e)}} rows={9}/>
+                    <textarea value ={editingCard ? editCard.answer : newCard.answer} className={"answerBox"} onChange={(e)=>{handleBoxChange(e)}} rows={9}/>
                 </div>
                     <div className="controls">
                         {addingCard && <ControlButton func={postCard} controlText={"Add Card"} disabled={!newCard.question || !newCard.answer}/>}

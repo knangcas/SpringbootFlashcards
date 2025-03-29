@@ -90,7 +90,8 @@ function App() {
   return (
       <>
       <h2 className="jbFont">{deck.name}</h2>
-          <h5 className="jbFont">{`Card ${deckIndex + 1} of ${deckLength}`}</h5>
+          {!endDeck && <h5 className="jbFont">{`Card ${deckIndex + 1} of ${deckLength}`}</h5>}
+          {endDeck && (skippedQty>0) && <h5 className="jbFont">{`You skipped ${skippedQty} cards.`}</h5>}
           <div className="mainContent">
               {!endDeck && <Flashcard content={flip ? card.answer: card.question} flipFunc={e=>handleFlip(e)}/>}
               {endDeck && <MessageAnimate msg="You have reached the end!"/>}
