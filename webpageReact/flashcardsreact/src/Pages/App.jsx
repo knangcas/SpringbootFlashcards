@@ -40,6 +40,7 @@ function App() {
         console.log("restart func");
         setDeck(curr=>{return {...curr, cards: originalFetchedDeck.cards}})
         deckIndex = 0;
+        setCard(originalFetchedDeck.cards[deckIndex])
         deckLength = originalFetchedDeck.cards.length;
         setEndDeck(false);
         skippedDeck = []
@@ -68,6 +69,7 @@ function App() {
     function startSkippedDeck() {
         deckLength = skippedDeck.length;
         setDeck(curr=> {return {...curr, cards: skippedDeck}});
+        setCard(skippedDeck[deckIndex]);
 
         setEndDeck(false);
         setSkippedQty(0);
@@ -88,9 +90,10 @@ function App() {
   return (
       <>
       <h2>{deck.name}</h2>
+          <h5>{`Card ${deckIndex + 1} of ${deckLength}`}</h5>
           <div className="mainContent">
               {!endDeck && <Flashcard content={flip ? card.answer: card.question} flipFunc={e=>handleFlip(e)}/>}
-              {endDeck && <MessageAnimate msg="You have reached the end! Load skipped cards?"/>}
+              {endDeck && <MessageAnimate msg="You have reached the end!"/>}
           </div>
           <div className="controls">
               <ControlButton disabled={deckStatus} controlText={"Restart"} func={handleRestart}/>
