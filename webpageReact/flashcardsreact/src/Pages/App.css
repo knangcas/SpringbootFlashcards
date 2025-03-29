@@ -35,6 +35,13 @@
   font-style: normal;
 }
 
+.navStyle {
+  width:100%;
+  margin: auto;
+  display:flex;
+  justify-content:Space-Evenly;
+  align-items:Center}
+
 .mainContent {
   display: flex;
   flex-direction: column;
