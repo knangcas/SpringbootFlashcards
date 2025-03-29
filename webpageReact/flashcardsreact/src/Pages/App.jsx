@@ -1,6 +1,4 @@
 import {useEffect, useState} from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Axios from "axios";
 import Flashcard from "../Components/Flashcard.jsx";
@@ -12,6 +10,7 @@ function App() {
     const [deck, setDeck] = useState({cards:[]});
     const [card, setCard] = useState({});
     const [flip, setFlip] = useState(false);
+    const [skippedQty, setSkippedQty] = useState(0);
     const [deckStatus, setDeckStatus] = useState(false);
     useEffect(()=>{
         fetchData();
@@ -48,12 +47,13 @@ function App() {
         setFlip(false);
     }
 
-    function handleFlip() {
+    function handleFlip(e) {
         setFlip((flip)=> !flip);
     }
 
     function handleSkip() {
         console.log("skip func");
+        setSkippedQty(skp=>skp + 1);
     }
 
 
@@ -61,12 +61,12 @@ function App() {
       <>
       <h2>{deck.name}</h2>
           <div className="mainContent">
-          <Flashcard content={flip ? card.answer: card.question} flipFunc={handleFlip}/>
+          <Flashcard content={flip ? card.answer: card.question} flipFunc={e=>handleFlip(e)}/>
           </div>
           <div className="controls">
             <ControlButton disabled={deckStatus} controlText={"Restart"} func={handleRestart}/>
             <ControlButton disabled={deckStatus} controlText={"Next"} styleClass={"controlButton nextButton"} func={handleNext}/>
-            <ControlButton disabled={deckStatus} controlText={"Skip"}  func={handleSkip}/>
+            <ControlButton disabled={deckStatus} controlText={skippedQty ? `Skip (${skippedQty})`: "Skip"}  func={handleSkip}/>
           </div>
       </>
   )
